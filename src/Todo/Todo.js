@@ -1,19 +1,25 @@
 import "./Todo.css";
 import TodoList from "./todo-list/TodoList";
-import todoCreate from "./todo-create/todoCreate";
+import TodoCreate from "./todo-create/todoCreate";
+import { useState } from "react";
 
 const Todo = () => {
-  const todos = [
+  const [getTodos, setTodos] = useState([
     { id: 1, title: "Eat" },
     { id: 2, title: "sleb" },
     { id: 3, title: "uweee" },
-  ];
+  ]);
+
+  const eventCreateTodo = (todo) => {
+    setTodos(getTodos.concat(todo));
+    console.log(getTodos);
+  };
 
   return (
     <div>
       <h3>todo list</h3>
-      <todoCreate />
-      <TodoList dataTodos={todos} />
+      <TodoCreate onCreateTodo={eventCreateTodo} />
+      <TodoList dataTodos={getTodos} />
     </div>
   );
 };
