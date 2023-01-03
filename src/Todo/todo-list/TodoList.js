@@ -1,11 +1,12 @@
 import "./TodoList.css";
 
-const TodoList = () => {
+const TodoList = (props) => {
+  console.log(props);
   return (
     <ul>
-      <li>Leran React </li>
-      <li> Stream </li>
-      <li> Stream </li>
+      {props.dataTodos.map((todo) => {
+        return <li key={todo.id}>{todo.title}</li>;
+      })}
     </ul>
   );
 };
